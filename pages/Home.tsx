@@ -8,44 +8,44 @@ const Home: React.FC = () => {
   const navigate = useNavigate();
 
   const services = [
-    { 
-      icon: Briefcase, 
-      title: "Strategic Consulting", 
+    {
+      icon: Briefcase,
+      title: "Strategic Consulting",
       desc: "Data-driven insights and strategic planning to optimize your business operations and drive growth",
       color: "from-blue-500 to-blue-600",
       bgColor: "bg-blue-50"
     },
-    { 
-      icon: Code, 
-      title: "Custom Development", 
+    {
+      icon: Code,
+      title: "Custom Development",
       desc: "Tailored software solutions built with cutting-edge technology to meet your unique needs",
       color: "from-purple-500 to-purple-600",
       bgColor: "bg-purple-50"
     },
-    { 
-      icon: Leaf, 
-      title: "Sustainability Audits", 
+    {
+      icon: Leaf,
+      title: "Sustainability Audits",
       desc: "Comprehensive environmental assessments to reduce your carbon footprint and improve efficiency",
       color: "from-emerald-500 to-emerald-600",
       bgColor: "bg-emerald-50"
     },
-    { 
-      icon: DollarSign, 
-      title: "Financial Planning", 
+    {
+      icon: DollarSign,
+      title: "Financial Planning",
       desc: "Expert financial advice and planning strategies to ensure sustainable growth and profitability",
       color: "from-orange-500 to-orange-600",
       bgColor: "bg-orange-50"
     },
-    { 
-      icon: Smartphone, 
-      title: "Mobile Solutions", 
+    {
+      icon: Smartphone,
+      title: "Mobile Solutions",
       desc: "Engaging mobile applications with intuitive design and seamless user experiences",
       color: "from-pink-500 to-pink-600",
       bgColor: "bg-pink-50"
     },
-    { 
-      icon: Map, 
-      title: "Global Expansion", 
+    {
+      icon: Map,
+      title: "Global Expansion",
       desc: "Strategic guidance and support to help you enter new markets confidently and successfully",
       color: "from-cyan-500 to-cyan-600",
       bgColor: "bg-cyan-50"
@@ -86,35 +86,35 @@ const Home: React.FC = () => {
   ];
 
   const featuredProjects = [
-    { 
-      id: 1, 
-      title: "Urban Eco-Park", 
-      category: "Landscape", 
-      img: "https://picsum.photos/600/400?random=30", 
+    {
+      id: 1,
+      title: "Urban Eco-Park",
+      category: "Landscape",
+      img: "https://picsum.photos/600/400?random=30",
       desc: "Transforming urban spaces into green sanctuaries",
       location: "Portland, Oregon"
     },
-    { 
-      id: 2, 
-      title: "Solar Tech Hub", 
-      category: "Architecture", 
-      img: "https://picsum.photos/600/400?random=31", 
+    {
+      id: 2,
+      title: "Solar Tech Hub",
+      category: "Architecture",
+      img: "https://picsum.photos/600/400?random=31",
       desc: "Next-generation sustainable building design",
       location: "Austin, Texas"
     },
-    { 
-      id: 3, 
-      title: "Clean Water Initiative", 
-      category: "Community", 
-      img: "https://picsum.photos/600/400?random=32", 
+    {
+      id: 3,
+      title: "Clean Water Initiative",
+      category: "Community",
+      img: "https://picsum.photos/600/400?random=32",
       desc: "Bringing clean water to underserved areas",
       location: "Rural Kenya"
     },
-    { 
-      id: 4, 
-      title: "Green Transport", 
-      category: "Infrastructure", 
-      img: "https://picsum.photos/600/400?random=33", 
+    {
+      id: 4,
+      title: "Green Transport",
+      category: "Infrastructure",
+      img: "https://picsum.photos/600/400?random=33",
       desc: "Eco-friendly transportation solutions",
       location: "Copenhagen, Denmark"
     }
@@ -126,9 +126,9 @@ const Home: React.FC = () => {
       <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1920&q=80" 
-            alt="Modern workspace" 
+          <img
+            src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1920&q=80"
+            alt="Modern workspace"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/85 to-primary-900/70" />
@@ -206,7 +206,7 @@ const Home: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
             </div>
-            
+
             {/* Floating Achievement Card */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -409,7 +409,7 @@ const Home: React.FC = () => {
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-300" />
-                
+
                 <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/90 backdrop-blur-sm text-primary-600 text-xs font-bold shadow-lg">
                   {project.category}
                 </div>
@@ -540,6 +540,10 @@ const Home: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-100 text-purple-700 text-sm font-semibold mb-4">
+              <Quote size={16} />
+              Client Stories
+            </div>
             <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">What Our Clients Say</h2>
             <p className="text-lg text-slate-600">
               Don't just take our word for it - hear from our satisfied partners
@@ -547,38 +551,193 @@ const Home: React.FC = () => {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            { name: "Sarah Johnson", role: "CEO, TechVision", quote: "EcoCorp transformed our operations with sustainable solutions that boosted efficiency by 40%." },
-            { name: "Michael Chen", role: "Director, GreenStart", quote: "Their expertise in green technology helped us achieve carbon neutrality ahead of schedule." },
-            { name: "Emma Davis", role: "Founder, InnovateCo", quote: "Outstanding service and results. They truly understand the balance between profit and sustainability." },
-          ].map((testimonial, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="p-8 bg-gradient-to-br from-slate-50 to-white rounded-2xl border border-slate-100 hover:shadow-xl transition-all duration-300"
-            >
-              <Quote className="text-primary-500 mb-4" size={32} />
-              <p className="text-slate-700 mb-6 leading-relaxed italic">"{testimonial.quote}"</p>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-full flex items-center justify-center text-white font-bold">
-                  {testimonial.name.charAt(0)}
+        {/* Scrolling Testimonials Container */}
+        <div className="relative overflow-hidden">
+          {/* Gradient Overlays */}
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+          
+          {/* Scrolling Track */}
+          <motion.div
+            className="flex gap-6"
+            animate={{
+              x: [0, -1920],
+            }}
+            transition={{
+              x: {
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 30,
+                ease: "linear",
+              },
+            }}
+          >
+            {/* First set of testimonials */}
+            {[
+              { 
+                name: "Sarah Johnson", 
+                role: "CEO, TechVision", 
+                company: "TechVision Inc.",
+                quote: "EcoCorp transformed our operations with sustainable solutions that boosted efficiency by 40%. Their team's expertise and dedication exceeded all expectations.",
+                image: "https://i.pravatar.cc/150?img=5"
+              },
+              { 
+                name: "Michael Chen", 
+                role: "Director, GreenStart", 
+                company: "GreenStart Solutions",
+                quote: "Their expertise in green technology helped us achieve carbon neutrality ahead of schedule. The ROI has been remarkable, and our employees love the new initiatives.",
+                image: "https://i.pravatar.cc/150?img=12"
+              },
+              { 
+                name: "Emma Davis", 
+                role: "Founder, InnovateCo", 
+                company: "InnovateCo Ltd.",
+                quote: "Outstanding service and results. They truly understand the balance between profit and sustainability. Our brand reputation has never been stronger.",
+                image: "https://i.pravatar.cc/150?img=9"
+              },
+              { 
+                name: "James Rodriguez", 
+                role: "VP Operations, EcoTech", 
+                company: "EcoTech Industries",
+                quote: "Working with EcoCorp has been a game-changer for our business. Their innovative approach to sustainability has helped us reduce costs while improving our environmental impact.",
+                image: "https://i.pravatar.cc/150?img=33"
+              },
+              { 
+                name: "Lisa Anderson", 
+                role: "Sustainability Director", 
+                company: "Global Innovations",
+                quote: "The team's commitment to excellence is unmatched. They delivered beyond our expectations and continue to provide outstanding support.",
+                image: "https://i.pravatar.cc/150?img=20"
+              },
+              { 
+                name: "Robert Kim", 
+                role: "CEO, Future Systems", 
+                company: "Future Systems Corp.",
+                quote: "EcoCorp's strategic consulting helped us navigate complex sustainability challenges. Their data-driven approach delivered measurable results that impressed our board.",
+                image: "https://i.pravatar.cc/150?img=15"
+              },
+            ].map((testimonial, idx) => (
+              <div
+                key={`first-${idx}`}
+                className="flex-shrink-0 w-[500px] p-8 bg-gradient-to-br from-slate-50 via-white to-primary-50/30 rounded-3xl border border-slate-100 shadow-lg hover:shadow-2xl transition-all duration-300"
+              >
+                <div className="flex gap-1 mb-6">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={18} className="fill-yellow-400 text-yellow-400" />
+                  ))}
                 </div>
-                <div>
-                  <h4 className="font-bold text-slate-900">{testimonial.name}</h4>
-                  <p className="text-sm text-slate-600">{testimonial.role}</p>
+                
+                <Quote className="text-primary-500 mb-4" size={40} />
+                
+                <p className="text-slate-700 text-lg mb-8 leading-relaxed italic">
+                  "{testimonial.quote}"
+                </p>
+                
+                <div className="flex items-center gap-4 pt-6 border-t border-slate-200">
+                  <div className="relative">
+                    <div className="w-16 h-16 rounded-full overflow-hidden border-4 border-gradient-to-br from-primary-500 to-secondary-500 shadow-lg">
+                      <img 
+                        src={testimonial.image} 
+                        alt={testimonial.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full flex items-center justify-center border-2 border-white">
+                      <CheckCircle2 size={14} className="text-white" />
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 text-lg">{testimonial.name}</h4>
+                    <p className="text-sm text-primary-600 font-semibold">{testimonial.role}</p>
+                    <p className="text-xs text-slate-500">{testimonial.company}</p>
+                  </div>
                 </div>
               </div>
-              <div className="flex gap-1 mt-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={16} className="fill-yellow-400 text-yellow-400" />
-                ))}
+            ))}
+            
+            {/* Duplicate set for seamless loop */}
+            {[
+              { 
+                name: "Sarah Johnson", 
+                role: "CEO, TechVision", 
+                company: "TechVision Inc.",
+                quote: "EcoCorp transformed our operations with sustainable solutions that boosted efficiency by 40%. Their team's expertise and dedication exceeded all expectations.",
+                image: "https://i.pravatar.cc/150?img=5"
+              },
+              { 
+                name: "Michael Chen", 
+                role: "Director, GreenStart", 
+                company: "GreenStart Solutions",
+                quote: "Their expertise in green technology helped us achieve carbon neutrality ahead of schedule. The ROI has been remarkable, and our employees love the new initiatives.",
+                image: "https://i.pravatar.cc/150?img=12"
+              },
+              { 
+                name: "Emma Davis", 
+                role: "Founder, InnovateCo", 
+                company: "InnovateCo Ltd.",
+                quote: "Outstanding service and results. They truly understand the balance between profit and sustainability. Our brand reputation has never been stronger.",
+                image: "https://i.pravatar.cc/150?img=9"
+              },
+              { 
+                name: "James Rodriguez", 
+                role: "VP Operations, EcoTech", 
+                company: "EcoTech Industries",
+                quote: "Working with EcoCorp has been a game-changer for our business. Their innovative approach to sustainability has helped us reduce costs while improving our environmental impact.",
+                image: "https://i.pravatar.cc/150?img=33"
+              },
+              { 
+                name: "Lisa Anderson", 
+                role: "Sustainability Director", 
+                company: "Global Innovations",
+                quote: "The team's commitment to excellence is unmatched. They delivered beyond our expectations and continue to provide outstanding support.",
+                image: "https://i.pravatar.cc/150?img=20"
+              },
+              { 
+                name: "Robert Kim", 
+                role: "CEO, Future Systems", 
+                company: "Future Systems Corp.",
+                quote: "EcoCorp's strategic consulting helped us navigate complex sustainability challenges. Their data-driven approach delivered measurable results that impressed our board.",
+                image: "https://i.pravatar.cc/150?img=15"
+              },
+            ].map((testimonial, idx) => (
+              <div
+                key={`second-${idx}`}
+                className="flex-shrink-0 w-[500px] p-8 bg-gradient-to-br from-slate-50 via-white to-primary-50/30 rounded-3xl border border-slate-100 shadow-lg hover:shadow-2xl transition-all duration-300"
+              >
+                <div className="flex gap-1 mb-6">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={18} className="fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                
+                <Quote className="text-primary-500 mb-4" size={40} />
+                
+                <p className="text-slate-700 text-lg mb-8 leading-relaxed italic">
+                  "{testimonial.quote}"
+                </p>
+                
+                <div className="flex items-center gap-4 pt-6 border-t border-slate-200">
+                  <div className="relative">
+                    <div className="w-16 h-16 rounded-full overflow-hidden border-4 border-gradient-to-br from-primary-500 to-secondary-500 shadow-lg">
+                      <img 
+                        src={testimonial.image} 
+                        alt={testimonial.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full flex items-center justify-center border-2 border-white">
+                      <CheckCircle2 size={14} className="text-white" />
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 text-lg">{testimonial.name}</h4>
+                    <p className="text-sm text-primary-600 font-semibold">{testimonial.role}</p>
+                    <p className="text-xs text-slate-500">{testimonial.company}</p>
+                  </div>
+                </div>
               </div>
-            </motion.div>
-          ))}
+            ))}
+          </motion.div>
         </div>
       </Section>
 
