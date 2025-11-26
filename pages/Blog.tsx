@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Section from '../components/UI/Section';
 import { Calendar, User, Clock, ArrowRight, Sparkles, TrendingUp, Tag } from 'lucide-react';
@@ -76,6 +77,7 @@ const categories = ["All", "Energy", "Business", "Community", "Technology", "Sus
 
 const Blog: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const navigate = useNavigate();
 
   const featuredPost = posts.find(post => post.featured);
   const regularPosts = posts.filter(post => !post.featured);
@@ -153,7 +155,10 @@ const Blog: React.FC = () => {
                 {featuredPost.category}
               </div>
 
-              <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 hover:text-primary-600 cursor-pointer transition-colors">
+              <h3 
+                onClick={() => navigate(`/blog/${featuredPost.id}`)}
+                className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 hover:text-primary-600 cursor-pointer transition-colors"
+              >
                 {featuredPost.title}
               </h3>
 
@@ -176,7 +181,10 @@ const Blog: React.FC = () => {
                 </span>
               </div>
 
-              <button className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-primary-600 to-secondary-500 text-white font-semibold hover:shadow-lg hover:shadow-primary-500/30 transition-all duration-300 hover:-translate-y-0.5 w-fit">
+              <button 
+                onClick={() => navigate(`/blog/${featuredPost.id}`)}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-primary-600 to-secondary-500 text-white font-semibold hover:shadow-lg hover:shadow-primary-500/30 transition-all duration-300 hover:-translate-y-0.5 w-fit"
+              >
                 Read Full Article <ArrowRight size={18} />
               </button>
             </div>
@@ -221,7 +229,8 @@ const Blog: React.FC = () => {
               exit={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.4, delay: idx * 0.1 }}
               whileHover={{ y: -8 }}
-              className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 flex flex-col group"
+              onClick={() => navigate(`/blog/${post.id}`)}
+              className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 flex flex-col group cursor-pointer"
             >
               <div className="relative h-56 overflow-hidden">
                 <img
@@ -260,7 +269,13 @@ const Blog: React.FC = () => {
                     <User size={16} className="text-primary-500" />
                     <span>{post.author}</span>
                   </div>
-                  <button className="text-primary-600 font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all duration-300">
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate(`/blog/${post.id}`);
+                    }}
+                    className="text-primary-600 font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all duration-300"
+                  >
                     Read <ArrowRight size={16} />
                   </button>
                 </div>

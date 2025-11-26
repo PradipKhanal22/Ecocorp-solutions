@@ -8,6 +8,8 @@ import Services from './pages/Services';
 import Gallery from './pages/Gallery';
 import Blog from './pages/Blog';
 import Contact from './pages/Contact';
+import ViewBlog from './pages/ViewBlog';
+import ViewGallery from './pages/ViewGallery';
 
 // Scroll to top wrapper
 const ScrollToTop = () => {
@@ -30,7 +32,9 @@ const App: React.FC = () => {
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
             <Route path="/gallery" element={<Gallery />} />
+            <Route path="/gallery/:id" element={<ViewGallery />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:id" element={<ViewBlog />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>

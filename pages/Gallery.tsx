@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Section from '../components/UI/Section';
 import { Sparkles, Grid3x3, Layout, ExternalLink, Award } from 'lucide-react';
@@ -20,6 +21,7 @@ const categories = ["All", "Architecture", "Landscape", "Community", "Infrastruc
 const Gallery: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const navigate = useNavigate();
 
   const filteredProjects = selectedCategory === "All" 
     ? projects 
@@ -128,6 +130,7 @@ const Gallery: React.FC = () => {
               whileHover={{ y: -8 }}
               onHoverStart={() => setHoveredId(project.id)}
               onHoverEnd={() => setHoveredId(null)}
+              onClick={() => navigate(`/gallery/${project.id}`)}
               className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500"
             >
               {/* Image */}

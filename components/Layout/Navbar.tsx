@@ -21,6 +21,19 @@ const Navbar: React.FC = () => {
     setIsOpen(false);
   }, [location]);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
@@ -42,48 +55,50 @@ const Navbar: React.FC = () => {
     }`;
 
   return (
-    <header className={headerClass}>
-      <div className="container mx-auto px-4 sm:px-6 md:px-12 flex items-center justify-between">
-        {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 group relative z-[60]">
-          <div className="bg-gradient-to-br from-primary-600 to-secondary-500 p-2 rounded-xl text-white group-hover:shadow-lg group-hover:shadow-primary-500/30 group-hover:scale-105 transition-all duration-300">
-            <Leaf size={24} className="sm:w-6 sm:h-6" />
-          </div>
-          <span className="text-xl sm:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-500">
-            EcoCorp
-          </span>
-        </Link>
-
-        {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link key={link.name} to={link.path} className={linkClass(link.path)}>
-              {link.name}
-              <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-600 to-secondary-500 transition-all duration-300 ${
-                location.pathname === link.path ? 'w-full' : 'group-hover:w-full'
-              }`} />
-            </Link>
-          ))}
-          <Link
-            to="/contact"
-            state={{ interest: 'quote' }}
-            className="px-6 py-2.5 rounded-full bg-gradient-to-r from-primary-600 to-secondary-500 text-white font-semibold text-sm shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/40 transition-all duration-300 transform hover:-translate-y-0.5"
-          >
-            Get a Quote
+    <>
+      <header className={headerClass}>
+        <div className="container mx-auto px-4 sm:px-6 md:px-12 flex items-center justify-between">
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-2 group relative z-[120]">
+            <div className="bg-gradient-to-br from-primary-600 to-secondary-500 p-2 rounded-xl text-white group-hover:shadow-lg group-hover:shadow-primary-500/30 group-hover:scale-105 transition-all duration-300">
+              <Leaf size={24} className="sm:w-6 sm:h-6" />
+            </div>
+            <span className="text-xl sm:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-500">
+              EcoCorp
+            </span>
           </Link>
-        </nav>
 
-        {/* Mobile Toggle */}
-        <button
-          className="lg:hidden text-slate-700 p-2 hover:bg-slate-100 rounded-lg transition-colors relative z-[60]"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
+          {/* Desktop Nav */}
+          <nav className="hidden lg:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <Link key={link.name} to={link.path} className={linkClass(link.path)}>
+                {link.name}
+                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-600 to-secondary-500 transition-all duration-300 ${
+                  location.pathname === link.path ? 'w-full' : 'group-hover:w-full'
+                }`} />
+              </Link>
+            ))}
+            <Link
+              to="/contact"
+              state={{ interest: 'quote' }}
+              className="px-6 py-2.5 rounded-full bg-gradient-to-r from-primary-600 to-secondary-500 text-white font-semibold text-sm shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/40 transition-all duration-300 transform hover:-translate-y-0.5"
+            >
+              Get a Quote
+            </Link>
+          </nav>
 
-      {/* Mobile Menu Overlay */}
+          {/* Mobile Toggle */}
+          <button
+            className="lg:hidden text-slate-700 p-2 hover:bg-slate-100 rounded-lg transition-colors relative z-[120]"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+      </header>
+
+      {/* Mobile Menu Overlay - Outside Header */}
       <AnimatePresence>
         {isOpen && (
           <>
@@ -92,9 +107,8 @@ const Navbar: React.FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="fixed inset-0 bg-slate-900/70 backdrop-blur-sm lg:hidden"
-              style={{ zIndex: 45 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] lg:hidden"
               onClick={() => setIsOpen(false)}
             />
             
@@ -103,15 +117,14 @@ const Navbar: React.FC = () => {
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-              className="fixed top-0 right-0 bottom-0 w-[85%] max-w-sm bg-white shadow-2xl lg:hidden overflow-y-auto"
-              style={{ zIndex: 55 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="fixed top-0 right-0 bottom-0 w-[280px] sm:w-[320px] bg-white shadow-2xl z-[110] lg:hidden overflow-y-auto"
             >
-              <div className="p-6 pt-24">
+              <div className="p-6 pt-20">
                 {/* Close button inside panel */}
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="absolute top-6 right-6 p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors"
+                  className="absolute top-4 right-4 p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors"
                   aria-label="Close menu"
                 >
                   <X size={24} />
@@ -131,8 +144,8 @@ const Navbar: React.FC = () => {
                         onClick={() => setIsOpen(false)}
                         className={`block px-4 py-3 rounded-xl text-base font-semibold transition-all duration-200 ${
                           location.pathname === link.path
-                            ? 'bg-gradient-to-r from-primary-50 to-secondary-50 text-primary-600'
-                            : 'text-slate-700 hover:bg-slate-50'
+                            ? 'bg-gradient-to-r from-primary-50 to-secondary-50 text-primary-600 border-l-4 border-primary-600'
+                            : 'text-slate-700 hover:bg-slate-50 hover:translate-x-1'
                         }`}
                       >
                         {link.name}
@@ -151,7 +164,7 @@ const Navbar: React.FC = () => {
                     to="/contact"
                     state={{ interest: 'quote' }}
                     onClick={() => setIsOpen(false)}
-                    className="block w-full text-center py-3.5 rounded-full bg-gradient-to-r from-primary-600 to-secondary-500 text-white font-bold shadow-lg shadow-primary-500/30"
+                    className="block w-full text-center py-3.5 rounded-full bg-gradient-to-r from-primary-600 to-secondary-500 text-white font-bold shadow-lg shadow-primary-500/30 hover:shadow-xl transition-all"
                   >
                     Get a Quote
                   </Link>
@@ -173,7 +186,7 @@ const Navbar: React.FC = () => {
           </>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 };
 
