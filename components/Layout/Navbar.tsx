@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Leaf, ChevronDown } from 'lucide-react';
+import { Menu, X, Leaf, ChevronDown, Mail, Phone, Clock } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar: React.FC = () => {
@@ -43,8 +43,8 @@ const Navbar: React.FC = () => {
     { name: 'Contact', path: '/contact' },
   ];
 
-  const headerClass = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-    scrolled ? 'bg-white/95 backdrop-blur-lg shadow-lg shadow-slate-900/5 py-3' : 'bg-white/80 backdrop-blur-md py-4 md:py-5'
+  const headerClass = `fixed left-0 right-0 z-50 transition-all duration-300 ${
+    scrolled ? 'top-0 bg-white/95 backdrop-blur-lg shadow-lg shadow-slate-900/5 py-3' : 'top-12 bg-white/80 backdrop-blur-md py-4 md:py-5'
   }`;
 
   const linkClass = (path: string) =>
@@ -56,6 +56,44 @@ const Navbar: React.FC = () => {
 
   return (
     <>
+      {/* Top Header Bar */}
+      <div className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? 'h-0 opacity-0 overflow-hidden' : 'h-12'
+      }`}>
+        <div className="bg-gradient-to-r from-primary-600 via-primary-700 to-secondary-600 text-white h-full">
+          <div className="container mx-auto px-4 sm:px-6 md:px-12 h-full flex items-center justify-between">
+            {/* Left Side - Contact Info */}
+            <div className="flex items-center gap-4 md:gap-6">
+              <a 
+                href="mailto:smarthandsgroup@gmail.com" 
+                className="flex items-center gap-2 text-xs md:text-sm hover:text-secondary-200 transition-colors group"
+              >
+                <Mail size={14} className="group-hover:scale-110 transition-transform" />
+                <span className="hidden sm:inline">ecocropsgroup@gmail.com</span>
+              </a>
+              <div className="w-px h-4 bg-white/30 hidden sm:block" />
+              <a 
+                href="tel:0420489011" 
+                className="flex items-center gap-2 text-xs md:text-sm hover:text-secondary-200 transition-colors group"
+              >
+                <Phone size={14} className="group-hover:scale-110 transition-transform" />
+                <span>0420489011</span>
+              </a>
+            </div>
+
+            {/* Right Side - Business Hours */}
+            <div className="flex items-center gap-2 text-xs md:text-sm">
+              <Clock size={14} />
+              <span className="hidden md:inline">Mon - Fri: 9:00 AM - 5:00 PM</span>
+              <span className="md:hidden">9AM - 5PM</span>
+              <span className="hidden lg:inline ml-2 px-2 py-0.5 bg-white/20 rounded-full text-xs">
+                Closed on Sunday
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <header className={headerClass}>
         <div className="container mx-auto px-4 sm:px-6 md:px-12 flex items-center justify-between">
           {/* Logo */}
@@ -120,15 +158,27 @@ const Navbar: React.FC = () => {
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
               className="fixed top-0 right-0 bottom-0 w-[280px] sm:w-[320px] bg-white shadow-2xl z-[110] lg:hidden overflow-y-auto"
             >
-              <div className="p-6 pt-20">
-                {/* Close button inside panel */}
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="absolute top-4 right-4 p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors"
-                  aria-label="Close menu"
-                >
-                  <X size={24} />
-                </button>
+              <div className="p-6 pt-6">
+                {/* Logo at the top */}
+                <div className="flex items-center justify-between mb-8">
+                  <Link to="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
+                    <div className="bg-gradient-to-br from-primary-600 to-secondary-500 p-2 rounded-xl text-white">
+                      <Leaf size={24} />
+                    </div>
+                    <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-500">
+                      EcoCorp
+                    </span>
+                  </Link>
+                  
+                  {/* Close button */}
+                  <button
+                    onClick={() => setIsOpen(false)}
+                    className="p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors"
+                    aria-label="Close menu"
+                  >
+                    <X size={24} />
+                  </button>
+                </div>
 
                 {/* Mobile Nav Links */}
                 <nav className="flex flex-col gap-2 mb-8">

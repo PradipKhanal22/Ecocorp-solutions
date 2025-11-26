@@ -87,7 +87,7 @@ const Blog: React.FC = () => {
     : regularPosts.filter(p => p.category === selectedCategory);
 
   return (
-    <div className="pt-20">
+    <div className="pt-32">
       {/* Hero Section */}
       <section className="relative min-h-[50vh] flex items-center overflow-hidden">
         {/* Background Image with Overlay */}

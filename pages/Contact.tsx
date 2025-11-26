@@ -62,7 +62,7 @@ const Contact: React.FC = () => {
   // --- RENDER: QUOTE MODE ---
   if (mode === 'quote') {
     return (
-      <div className="pt-20 min-h-screen bg-slate-50">
+      <div className="pt-32 min-h-screen bg-slate-50">
         {/* Hero Section for Quote */}
         <section className="relative py-16 overflow-hidden bg-gradient-to-br from-primary-600 to-secondary-500">
           <div className="absolute inset-0 opacity-10">
@@ -226,7 +226,7 @@ const Contact: React.FC = () => {
 
   // --- RENDER: CONTACT MODE (Default) ---
   return (
-    <div className="pt-20">
+    <div className="pt-32">
       {/* Hero Section */}
       <section className="relative min-h-[50vh] flex items-center overflow-hidden">
         {/* Background Image with Overlay */}

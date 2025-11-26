@@ -45,7 +45,7 @@ const services = [
 
 const Services: React.FC = () => {
   return (
-    <div className="pt-20">
+    <div className="pt-32">
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center overflow-hidden">
         {/* Background Image with Overlay */}

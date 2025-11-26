@@ -264,7 +264,7 @@ const ViewBlog: React.FC = () => {
   }
 
   return (
-    <div className="pt-20">
+    <div className="pt-32">
       {/* Hero Section with Featured Image */}
       <section className="relative h-[60vh] overflow-hidden">
         <div className="absolute inset-0">
