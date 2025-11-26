@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import Section from '../components/UI/Section';
-import { Mail, MapPin, Phone, Send, CheckCircle2, ArrowRight, Building, Calendar, DollarSign, MessageSquare } from 'lucide-react';
+import { Mail, MapPin, Phone, Send, CheckCircle2, ArrowRight, Building, Calendar, DollarSign, MessageSquare, Sparkles, Clock, Globe } from 'lucide-react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 type FormMode = 'contact' | 'quote';
@@ -62,33 +63,53 @@ const Contact: React.FC = () => {
   if (mode === 'quote') {
     return (
       <div className="pt-20 min-h-screen bg-slate-50">
-        <Section className="!py-12">
-          <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-10">
-              <span className="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-700 text-xs font-bold tracking-wide uppercase mb-4">
+        {/* Hero Section for Quote */}
+        <section className="relative py-16 overflow-hidden bg-gradient-to-br from-primary-600 to-secondary-500">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl" />
+          </div>
+          
+          <div className="container mx-auto px-6 md:px-12 text-center relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-white text-sm font-semibold mb-6">
+                <DollarSign size={16} />
                 Project Inquiry
-              </span>
-              <h1 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">Request a Free Quote</h1>
-              <p className="text-lg text-slate-600 mb-8">
-                Tell us about your project goals and requirements. We'll analyze your needs and provide a detailed proposal within 24 hours.
+              </div>
+              <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">Request a Free Quote</h1>
+              <p className="text-lg text-white/90 mb-6 max-w-2xl mx-auto">
+                Tell us about your project goals and requirements. We'll provide a detailed proposal within 24 hours.
               </p>
               
               <button 
                 onClick={() => toggleMode('contact')}
-                className="text-sm text-slate-500 hover:text-primary-600 underline flex items-center justify-center gap-1 mx-auto"
+                className="text-sm text-white/80 hover:text-white underline flex items-center justify-center gap-1 mx-auto"
               >
-                Looking for general contact info instead? Click here
+                Looking for general contact? Switch here
               </button>
-            </div>
+            </motion.div>
+          </div>
+        </section>
 
-            <div className="bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
+        <Section className="!py-12">
+          <div className="max-w-3xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden"
+            >
               <div className="bg-gradient-to-r from-primary-600 to-secondary-500 h-2 w-full"></div>
               <form onSubmit={handleSubmit} className="p-8 md:p-12 space-y-8">
                 
                 {/* Personal Info */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-semibold text-slate-700 mb-2">Full Name</label>
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">Full Name *</label>
                     <input
                       type="text"
                       required
@@ -99,7 +120,7 @@ const Contact: React.FC = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-slate-700 mb-2">Work Email</label>
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">Work Email *</label>
                     <input
                       type="email"
                       required
@@ -196,7 +217,7 @@ const Contact: React.FC = () => {
                   By submitting this form, you agree to our privacy policy. Your information is kept strictly confidential.
                 </p>
               </form>
-            </div>
+            </motion.div>
           </div>
         </Section>
       </div>
@@ -206,68 +227,156 @@ const Contact: React.FC = () => {
   // --- RENDER: CONTACT MODE (Default) ---
   return (
     <div className="pt-20">
+      {/* Hero Section */}
+      <section className="relative min-h-[50vh] flex items-center overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1920&q=80" 
+            alt="Contact us" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/85 to-primary-900/75" />
+        </div>
+        
+        {/* Decorative Elements */}
+        <div className="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-bl from-emerald-500/10 to-blue-500/10 rounded-bl-[8rem] z-[1]" />
+        
+        <div className="container mx-auto px-6 md:px-12 relative z-10 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-semibold mb-6">
+              <Sparkles size={16} className="text-emerald-400" />
+              We're Here to Help
+            </div>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight text-white mb-6">
+              Get in <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-blue-400">Touch</span>
+            </h1>
+            <p className="text-xl text-slate-200 max-w-3xl mx-auto leading-relaxed">
+              Whether you have a question, need support, or want to discuss a project, our team is ready to assist you.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       <Section>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Left: Contact Info */}
-          <div>
-            <div className="mb-8">
-              <span className="text-primary-600 font-bold tracking-wider uppercase text-sm">Contact Us</span>
-              <h1 className="text-4xl font-bold text-slate-900 mt-2 mb-6">Get in Touch</h1>
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="mb-10">
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Contact Information</h2>
               <p className="text-lg text-slate-600 leading-relaxed">
-                We'd love to hear from you. Whether you have a question about our services, pricing, or just want to say hello, our team is ready to answer all your questions.
+                We'd love to hear from you. Reach out through any of these channels and we'll respond promptly.
               </p>
             </div>
             
-            <div className="space-y-8 mb-12">
-              <div className="flex items-start gap-5">
-                <div className="p-4 bg-blue-50 text-blue-600 rounded-2xl shadow-sm">
+            <div className="space-y-6 mb-12">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="flex items-start gap-5 p-6 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100/50 border border-blue-100 hover:shadow-lg transition-all duration-300 group"
+              >
+                <div className="p-3 bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-xl shadow-lg group-hover:scale-110 transition-transform">
                   <MapPin size={24} />
                 </div>
                 <div>
-                  <h4 className="text-lg font-bold text-slate-900">Our Location</h4>
-                  <p className="text-slate-600 mt-1">123 Innovation Drive,<br />Tech Valley, CA 94043</p>
+                  <h4 className="text-lg font-bold text-slate-900 mb-1">Our Location</h4>
+                  <p className="text-slate-700">123 Innovation Drive,<br />Tech Valley, CA 94043</p>
                 </div>
-              </div>
+              </motion.div>
               
-              <div className="flex items-start gap-5">
-                <div className="p-4 bg-emerald-50 text-emerald-600 rounded-2xl shadow-sm">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="flex items-start gap-5 p-6 rounded-2xl bg-gradient-to-br from-emerald-50 to-emerald-100/50 border border-emerald-100 hover:shadow-lg transition-all duration-300 group"
+              >
+                <div className="p-3 bg-gradient-to-br from-emerald-500 to-emerald-600 text-white rounded-xl shadow-lg group-hover:scale-110 transition-transform">
                   <Mail size={24} />
                 </div>
                 <div>
-                  <h4 className="text-lg font-bold text-slate-900">Email Us</h4>
-                  <p className="text-slate-600 mt-1">contact@ecocorp.com</p>
-                  <p className="text-slate-500 text-sm mt-1">Response time: ~2 hours</p>
+                  <h4 className="text-lg font-bold text-slate-900 mb-1">Email Us</h4>
+                  <p className="text-slate-700">contact@ecocorp.com</p>
+                  <p className="text-slate-500 text-sm mt-1 flex items-center gap-1">
+                    <Clock size={14} /> Response time: ~2 hours
+                  </p>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="flex items-start gap-5">
-                <div className="p-4 bg-purple-50 text-purple-600 rounded-2xl shadow-sm">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="flex items-start gap-5 p-6 rounded-2xl bg-gradient-to-br from-purple-50 to-purple-100/50 border border-purple-100 hover:shadow-lg transition-all duration-300 group"
+              >
+                <div className="p-3 bg-gradient-to-br from-purple-500 to-purple-600 text-white rounded-xl shadow-lg group-hover:scale-110 transition-transform">
                   <Phone size={24} />
                 </div>
                 <div>
-                  <h4 className="text-lg font-bold text-slate-900">Call Us</h4>
-                  <p className="text-slate-600 mt-1">+1 (555) 123-4567</p>
+                  <h4 className="text-lg font-bold text-slate-900 mb-1">Call Us</h4>
+                  <p className="text-slate-700">+1 (555) 123-4567</p>
                   <p className="text-slate-500 text-sm mt-1">Mon-Fri, 9am - 6pm EST</p>
                 </div>
-              </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="flex items-start gap-5 p-6 rounded-2xl bg-gradient-to-br from-orange-50 to-orange-100/50 border border-orange-100 hover:shadow-lg transition-all duration-300 group"
+              >
+                <div className="p-3 bg-gradient-to-br from-orange-500 to-orange-600 text-white rounded-xl shadow-lg group-hover:scale-110 transition-transform">
+                  <Globe size={24} />
+                </div>
+                <div>
+                  <h4 className="text-lg font-bold text-slate-900 mb-1">Global Presence</h4>
+                  <p className="text-slate-700">45+ Countries Worldwide</p>
+                  <p className="text-slate-500 text-sm mt-1">Serving clients across 6 continents</p>
+                </div>
+              </motion.div>
             </div>
 
             {/* CTA Card */}
-            <div className="bg-slate-900 rounded-2xl p-8 text-white relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary-500 rounded-full blur-3xl opacity-20 -mr-10 -mt-10"></div>
-                <h4 className="text-xl font-bold mb-3 relative z-10">Looking for a custom solution?</h4>
-                <p className="text-slate-300 mb-6 relative z-10">Get a detailed cost estimate for your specific project needs.</p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-8 text-white relative overflow-hidden shadow-xl"
+            >
+                <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-primary-500 to-secondary-500 rounded-full blur-3xl opacity-20 -mr-10 -mt-10"></div>
+                <h4 className="text-2xl font-bold mb-3 relative z-10">Need a Custom Solution?</h4>
+                <p className="text-slate-300 mb-6 relative z-10">Get a detailed cost estimate tailored to your specific project requirements.</p>
                 <button 
                   onClick={() => toggleMode('quote')}
-                  className="inline-flex items-center gap-2 bg-white text-slate-900 px-5 py-2.5 rounded-lg font-bold hover:bg-slate-100 transition-colors relative z-10"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-600 to-secondary-500 text-white px-6 py-3 rounded-full font-bold hover:shadow-lg hover:shadow-primary-500/30 transition-all duration-300 hover:-translate-y-0.5 relative z-10"
                 >
-                  Request a Quote <ArrowRight size={16} />
+                  Request a Quote <ArrowRight size={18} />
                 </button>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Right: General Form */}
-          <div className="bg-white p-8 md:p-10 rounded-3xl shadow-lg border border-slate-100 h-fit">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="bg-white p-8 md:p-10 rounded-3xl shadow-xl border border-slate-100 h-fit"
+          >
             <h3 className="text-2xl font-bold text-slate-900 mb-6">Send us a Message</h3>
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
@@ -341,7 +450,7 @@ const Contact: React.FC = () => {
                 )}
               </button>
             </form>
-          </div>
+          </motion.div>
         </div>
       </Section>
     </div>
