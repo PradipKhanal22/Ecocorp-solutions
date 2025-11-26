@@ -1,10 +1,125 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle2, Zap, Shield, Globe, Award, Users, TrendingUp, Sparkles, Star, Quote } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Zap, Shield, Globe, Award, Users, TrendingUp, Sparkles, Star, Quote, Briefcase, Code, Leaf, DollarSign, Smartphone, Map, Calendar, Clock, User, ExternalLink, MapPin } from 'lucide-react';
 import Section from '../components/UI/Section';
 
 const Home: React.FC = () => {
+  const navigate = useNavigate();
+
+  const services = [
+    { 
+      icon: Briefcase, 
+      title: "Strategic Consulting", 
+      desc: "Data-driven insights and strategic planning to optimize your business operations and drive growth",
+      color: "from-blue-500 to-blue-600",
+      bgColor: "bg-blue-50"
+    },
+    { 
+      icon: Code, 
+      title: "Custom Development", 
+      desc: "Tailored software solutions built with cutting-edge technology to meet your unique needs",
+      color: "from-purple-500 to-purple-600",
+      bgColor: "bg-purple-50"
+    },
+    { 
+      icon: Leaf, 
+      title: "Sustainability Audits", 
+      desc: "Comprehensive environmental assessments to reduce your carbon footprint and improve efficiency",
+      color: "from-emerald-500 to-emerald-600",
+      bgColor: "bg-emerald-50"
+    },
+    { 
+      icon: DollarSign, 
+      title: "Financial Planning", 
+      desc: "Expert financial advice and planning strategies to ensure sustainable growth and profitability",
+      color: "from-orange-500 to-orange-600",
+      bgColor: "bg-orange-50"
+    },
+    { 
+      icon: Smartphone, 
+      title: "Mobile Solutions", 
+      desc: "Engaging mobile applications with intuitive design and seamless user experiences",
+      color: "from-pink-500 to-pink-600",
+      bgColor: "bg-pink-50"
+    },
+    { 
+      icon: Map, 
+      title: "Global Expansion", 
+      desc: "Strategic guidance and support to help you enter new markets confidently and successfully",
+      color: "from-cyan-500 to-cyan-600",
+      bgColor: "bg-cyan-50"
+    },
+  ];
+
+  const featuredBlogs = [
+    {
+      id: 1,
+      title: "The Future of Renewable Energy in 2025",
+      excerpt: "Exploring the latest trends and innovations shaping the renewable energy landscape this year.",
+      date: "Nov 15, 2025",
+      author: "Dr. Emily Chen",
+      image: "https://picsum.photos/600/400?random=40",
+      category: "Energy",
+      readTime: "5 min"
+    },
+    {
+      id: 2,
+      title: "How to Build a Sustainable Business Strategy",
+      excerpt: "Key steps to integrating sustainability into your core business model without sacrificing profitability.",
+      date: "Nov 02, 2025",
+      author: "Mark Johnson",
+      image: "https://picsum.photos/600/400?random=41",
+      category: "Business",
+      readTime: "7 min"
+    },
+    {
+      id: 3,
+      title: "Smart Cities: Technology Meets Sustainability",
+      excerpt: "How IoT and AI are revolutionizing urban planning and creating greener cities.",
+      date: "Oct 20, 2025",
+      author: "David Lee",
+      image: "https://picsum.photos/600/400?random=43",
+      category: "Technology",
+      readTime: "6 min"
+    }
+  ];
+
+  const featuredProjects = [
+    { 
+      id: 1, 
+      title: "Urban Eco-Park", 
+      category: "Landscape", 
+      img: "https://picsum.photos/600/400?random=30", 
+      desc: "Transforming urban spaces into green sanctuaries",
+      location: "Portland, Oregon"
+    },
+    { 
+      id: 2, 
+      title: "Solar Tech Hub", 
+      category: "Architecture", 
+      img: "https://picsum.photos/600/400?random=31", 
+      desc: "Next-generation sustainable building design",
+      location: "Austin, Texas"
+    },
+    { 
+      id: 3, 
+      title: "Clean Water Initiative", 
+      category: "Community", 
+      img: "https://picsum.photos/600/400?random=32", 
+      desc: "Bringing clean water to underserved areas",
+      location: "Rural Kenya"
+    },
+    { 
+      id: 4, 
+      title: "Green Transport", 
+      category: "Infrastructure", 
+      img: "https://picsum.photos/600/400?random=33", 
+      desc: "Eco-friendly transportation solutions",
+      location: "Copenhagen, Denmark"
+    }
+  ];
+
   return (
     <>
       {/* Hero Section with Background Image */}
@@ -37,7 +152,7 @@ const Home: React.FC = () => {
                 </span>
                 Innovating for Tomorrow
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-white mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold leading-tight text-white mb-6">
                 Building a <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-blue-400">Sustainable</span> Future Together
               </h1>
               <p className="text-lg md:text-xl text-slate-200 leading-relaxed max-w-2xl">
@@ -212,35 +327,36 @@ const Home: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-100 text-primary-700 text-sm font-semibold mb-4">
+              <Sparkles size={16} />
+              What We Offer
+            </div>
             <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">Our Core Services</h2>
             <p className="text-lg text-slate-600">
-              Comprehensive solutions designed to drive your business forward
+              Comprehensive solutions designed to drive your business forward and create lasting impact
             </p>
           </motion.div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {[
-            { title: "Strategic Consulting", desc: "Data-driven insights for better decisions", color: "bg-blue-50 text-blue-600" },
-            { title: "Custom Development", desc: "Tailored software solutions", color: "bg-purple-50 text-purple-600" },
-            { title: "Sustainability Audits", desc: "Reduce your carbon footprint", color: "bg-emerald-50 text-emerald-600" },
-            { title: "Financial Planning", desc: "Expert advice for growth", color: "bg-orange-50 text-orange-600" },
-            { title: "Mobile Solutions", desc: "Engaging mobile applications", color: "bg-pink-50 text-pink-600" },
-            { title: "Global Expansion", desc: "Enter new markets confidently", color: "bg-cyan-50 text-cyan-600" },
-          ].map((service, idx) => (
+          {services.map((service, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="p-6 bg-white rounded-2xl border border-slate-100 hover:shadow-xl transition-all duration-300 group cursor-pointer"
+              onClick={() => navigate('/services')}
+              className="p-8 bg-white rounded-2xl border border-slate-100 hover:shadow-2xl hover:border-primary-200 transition-all duration-300 group cursor-pointer"
             >
-              <div className={`w-12 h-12 ${service.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                <CheckCircle2 size={24} />
+              <div className={`w-16 h-16 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg`}>
+                <service.icon size={32} className="text-white" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">{service.title}</h3>
-              <p className="text-slate-600">{service.desc}</p>
+              <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-primary-600 transition-colors">{service.title}</h3>
+              <p className="text-slate-600 leading-relaxed mb-4">{service.desc}</p>
+              <div className="flex items-center gap-2 text-primary-600 font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                Learn More <ArrowRight size={16} />
+              </div>
             </motion.div>
           ))}
         </div>
@@ -251,6 +367,166 @@ const Home: React.FC = () => {
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-primary-600 to-secondary-500 text-white font-bold text-lg hover:shadow-xl hover:shadow-primary-500/40 hover:-translate-y-1 transition-all duration-300"
           >
             View All Services <ArrowRight size={20} />
+          </Link>
+        </div>
+      </Section>
+
+      {/* Featured Projects/Gallery */}
+      <Section bgColor="white">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100 text-emerald-700 text-sm font-semibold mb-4">
+              <Award size={16} />
+              Our Work
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">Featured Projects</h2>
+            <p className="text-lg text-slate-600">
+              Showcasing our most impactful sustainability and innovation projects
+            </p>
+          </motion.div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          {featuredProjects.map((project, idx) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              onClick={() => navigate(`/gallery/${project.id}`)}
+              className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500"
+            >
+              <div className="relative h-80 overflow-hidden">
+                <img
+                  src={project.img}
+                  alt={project.title}
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-300" />
+                
+                <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/90 backdrop-blur-sm text-primary-600 text-xs font-bold shadow-lg">
+                  {project.category}
+                </div>
+
+                <div className="absolute inset-0 flex flex-col justify-end p-6">
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                    className="transform translate-y-0 group-hover:translate-y-0 transition-transform duration-300"
+                  >
+                    <div className="flex items-center gap-2 text-emerald-400 text-sm mb-2">
+                      <MapPin size={14} />
+                      <span>{project.location}</span>
+                    </div>
+                    <h3 className="text-white text-xl font-bold mb-2">{project.title}</h3>
+                    <p className="text-slate-300 text-sm mb-3">{project.desc}</p>
+                    <div className="flex items-center gap-2 text-white font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                      View Project <ExternalLink size={16} />
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="text-center">
+          <Link
+            to="/gallery"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-slate-900 text-white font-bold text-lg hover:bg-slate-800 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+          >
+            Explore All Projects <ArrowRight size={20} />
+          </Link>
+        </div>
+      </Section>
+
+      {/* Featured Blog Posts */}
+      <Section bgColor="light">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 text-sm font-semibold mb-4">
+              <TrendingUp size={16} />
+              Latest Insights
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">From Our Blog</h2>
+            <p className="text-lg text-slate-600">
+              Stay informed with our latest articles on sustainability and innovation
+            </p>
+          </motion.div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          {featuredBlogs.map((blog, idx) => (
+            <motion.article
+              key={blog.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              onClick={() => navigate(`/blog/${blog.id}`)}
+              className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 flex flex-col group cursor-pointer"
+            >
+              <div className="relative h-56 overflow-hidden">
+                <img
+                  src={blog.image}
+                  alt={blog.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/90 backdrop-blur-sm text-primary-600 text-xs font-bold shadow-lg">
+                  {blog.category}
+                </div>
+              </div>
+
+              <div className="p-6 flex-1 flex flex-col">
+                <div className="flex items-center gap-4 text-xs text-slate-500 mb-3">
+                  <span className="flex items-center gap-1">
+                    <Calendar size={14} className="text-primary-500" />
+                    {blog.date}
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Clock size={14} className="text-primary-500" />
+                    {blog.readTime}
+                  </span>
+                </div>
+
+                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-primary-600 cursor-pointer transition-colors line-clamp-2">
+                  {blog.title}
+                </h3>
+
+                <p className="text-slate-600 mb-4 flex-1 line-clamp-3">{blog.excerpt}</p>
+
+                <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+                  <div className="flex items-center gap-2 text-sm text-slate-600">
+                    <User size={16} className="text-primary-500" />
+                    <span>{blog.author}</span>
+                  </div>
+                  <div className="text-primary-600 font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all duration-300">
+                    Read <ArrowRight size={16} />
+                  </div>
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+
+        <div className="text-center">
+          <Link
+            to="/blog"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-primary-600 to-secondary-500 text-white font-bold text-lg hover:shadow-xl hover:shadow-primary-500/40 hover:-translate-y-1 transition-all duration-300"
+          >
+            Read More Articles <ArrowRight size={20} />
           </Link>
         </div>
       </Section>
